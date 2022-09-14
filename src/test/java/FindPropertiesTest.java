@@ -27,7 +27,6 @@ public class FindPropertiesTest extends BaseTest {
         homePage.selectArea(searchArea,selectArea_1);
         homePage.selectArea(searchArea,selectArea_2);
         homePage.getSearchButton().click();
-        sleeps(5000);
         WebElement property = homePage.selectProperty(4);
         homePage.mouseHover(property);
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());

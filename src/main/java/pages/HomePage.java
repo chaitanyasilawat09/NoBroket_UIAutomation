@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -49,7 +51,6 @@ public class HomePage extends BasePage{
     public String selectValueFromDropDown(String cityName){
         List<WebElement> element = driver.findElements(By.xpath("(//div[contains(@class,'nb-select__menu')])[1]/div/div"));
         for (WebElement e : element){
-            System.out.println( e.getText());
             if (e.getText().contains(cityName)) {
                 e.click();
                 break;
@@ -73,7 +74,6 @@ public class HomePage extends BasePage{
         }
     }
 
-
     public void sleeps(int time) {
         try {
             Thread.sleep(time);
@@ -85,7 +85,6 @@ public class HomePage extends BasePage{
     public String selectCity(String cityName){
         List<WebElement> element = driver.findElements(By.xpath("(//div[contains(@class,'nb-select__menu')])[1]/div/div"));
         for (WebElement e : element){
-            System.out.println( e.getText());
             if (e.getText().contains(cityName)) {
                 e.click();
                 break;
@@ -95,6 +94,8 @@ public class HomePage extends BasePage{
     }
 
     public WebElement selectProperty(int propertyIndex){
+        WebDriverWait wait = new WebDriverWait(driver,30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//h2/span)["+propertyIndex+"]")));
         WebElement property = driver.findElement(By.xpath("(//h2/span)["+propertyIndex+"]"));
         property.isDisplayed();
         property.isEnabled();

@@ -30,12 +30,12 @@ public class BasePage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("(//h2/span)[4]")));
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                 try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(By.xpath("(//h2/span)[4]")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 }
